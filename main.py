@@ -68,7 +68,7 @@ if __name__ == "__main__":
     # For example, you can pass it to the `evaluate_cefs` function from fetch
     for ticker in tickers:
         print(f"Fetching data for {ticker}...")
-        price_nav = fetch_historic_cef_price_nav(ticker)
+        prices,navs = fetch_historic_cef_price_nav(ticker)
         # fetch based on today and two years ago
         cef_dividends = fetch_cef_dividends(ticker, (datetime.datetime.now() - datetime.timedelta(days=730)).strftime("%Y-%m-%d"), datetime.datetime.now().strftime("%Y-%m-%d"))
         #if price_nav:
@@ -81,8 +81,9 @@ if __name__ == "__main__":
 
         context = {
             "ticker": ticker,
-            "price_nav_date": price_nav,
-            "cef_dividends": cef_dividends,
+            #"price_nav_date": price_nav,
+            #"cef_dividends": cef_dividends,
+            "nav_over_price_recommendations": recommendations
         }
         #model_prompt = system_prompt_template.invoke({'data': context})
 
