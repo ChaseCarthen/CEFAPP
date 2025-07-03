@@ -81,8 +81,12 @@ if __name__ == "__main__":
 
         context = {
             "ticker": ticker,
+            "price_nav_date": {
+                "latest_price": prices[-1],
+                "latest_nav": navs[-1]
+            },
             #"price_nav_date": price_nav,
-            #"cef_dividends": cef_dividends,
+            "cef_dividends": cef_dividends,
             "nav_over_price_recommendations": recommendations
         }
         #model_prompt = system_prompt_template.invoke({'data': context})

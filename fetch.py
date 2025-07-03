@@ -39,8 +39,8 @@ def fetch_historic_cef_price_nav(ticker: str):
             print(f"[{ticker}] No price history available.")
             return None
 
-        navs = {entry.get("DataDate"): float(entry.get("NAVData", 0)) for entry in price_history if entry.get("NAVData") is not None}
-        prices = {entry.get("DataDate"): float(entry.get("Data", 0)) for entry in price_history if entry.get("Data") is not None}
+        navs = [(entry.get("DataDate"), float(entry.get("NAVData", 0))) for entry in price_history if entry.get("NAVData") is not None]
+        prices = [(entry.get("DataDate"), float(entry.get("Data", 0))) for entry in price_history if entry.get("Data") is not None]
         return prices, navs
     except Exception as e:
         print(f"[{ticker}] Error fetching historic data: {e}")
