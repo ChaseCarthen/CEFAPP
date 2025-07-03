@@ -82,8 +82,8 @@ if __name__ == "__main__":
         context = {
             "ticker": ticker,
             "price_nav_date": {
-                "latest_price": prices[-1],
-                "latest_nav": navs[-1]
+                "latest_10_price": prices[-10:],
+                "latest_10_nav": navs[-10:]
             },
             #"price_nav_date": price_nav,
             "cef_dividends": cef_dividends,
